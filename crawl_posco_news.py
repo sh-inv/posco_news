@@ -6,7 +6,7 @@ import os
 # 네이버 뉴스 검색 API 설정
 API_URL = "https://openapi.naver.com/v1/search/news.json"
 
-# API 헤더 (환경변수에서 가져오기)
+# 환경변수에서 Naver API 인증 정보를 가져와 요청 헤더 생성
 def get_headers():
     """환경변수에서 API 키를 가져와서 헤더 생성"""
     client_id = st.secrets.get("NAVER_CLIENT_ID") or os.getenv("NAVER_CLIENT_ID")
@@ -18,6 +18,7 @@ def get_headers():
     }
 
 
+# Naver API를 이용해 입력한 키워드로 뉴스를 검색하고 결과를 반환
 def search_news(keyword, display=20, start=1, sort="date"):
     """
     네이버 뉴스 검색 API를 호출하는 함수
